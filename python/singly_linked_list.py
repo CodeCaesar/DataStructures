@@ -74,22 +74,24 @@ class SinglyLinkedList:
 
         self.size += 1
     
+    def __remove_solo(self, value):
+        if self.head.data == value:
+            self.head = None
+            self.tail = None
+            self.size -= 1
+        else:
+            print(f'Node with value: "{value}" not found')
+
     def remove(self, value):
         if self.size == 0:
             print("Linked List is empty")
             return
 
-        current = self.head
-
         if self.size == 1:
-            if current.data == value:
-                self.head = None
-                self.tail = None
-                self.size -= 1
-                return
-            else:
-                print(f'Node with value: "{value}" not found')
-                return
+            self.__remove_solo(value)
+            return
+        
+        current = self.head
 
         if current.data == value:
             self.head = self.head.next_node
