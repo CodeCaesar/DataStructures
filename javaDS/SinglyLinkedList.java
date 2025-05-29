@@ -38,4 +38,26 @@ public class SinglyLinkedList {
     public int getTail() {
         return this.tail.data;
     }
+
+    public void append(int value) {
+        Node newNode = new Node(value);
+
+        if(this.head == null) {
+            this.head = newNode;
+            this.tail = this.head;
+        } else {
+            this.tail.nextNode = newNode;
+            this.tail = this.tail.nextNode;
+        }
+        
+        this.size += 1;
+    }
+    
+    public void prepend(int value) {
+        Node newNode = new Node(value);
+        newNode.nextNode = this.head;
+        this.head = newNode;
+
+        this.size += 1;
+    }
 }
