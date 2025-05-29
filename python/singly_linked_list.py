@@ -31,3 +31,22 @@ class SinglyLinkedList:
     
     def get_tail(self):
         return self.tail
+    
+    def append(self, value):
+        new_node = _None(value)
+
+        if self.head == None:
+            self.head = new_node
+            self.tail = self.head
+        else:
+            self.tail.next_node = new_node
+            self.tail = self.tail.next_node
+        
+        self.size += 1
+    
+    def prepend(self, value):
+        new_node = _None(value)
+        new_node.next_node = self.head
+        self.head = new_node
+        
+        self.size += 1
