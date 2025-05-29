@@ -76,7 +76,8 @@ class SinglyLinkedList:
     
     def remove(self, value):
         if self.size == 0:
-            return "Linked List is empty"
+            print("Linked List is empty")
+            return
 
         current = self.head
 
@@ -87,20 +88,23 @@ class SinglyLinkedList:
                 self.size -= 1
                 return
             else:
-                return f'Node with value: "{value}" not found'
+                print(f'Node with value: "{value}" not found')
+                return
 
         if current.data == value:
             self.head = self.head.next_node
             self.size -= 1
+            return
 
         while current.next_node:
             if current.next_node.data == value:
                 current.next_node = current.next_node.next_node
                 self.size -= 1
+                return
 
             current = current.next_node
         
-        return f'Node with value: "{value}" not found'
+        print(f'Node with value: "{value}" not found')
 
 
 list = SinglyLinkedList()
@@ -112,5 +116,6 @@ list.append(4)
 list.append(3)
 list.remove(5)
 list.remove(4)
+list.remove(942)
 
 print(list)
