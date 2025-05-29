@@ -4,6 +4,10 @@ class _None:
 
     def __self__(self, data):
         self.data = data
+        self.next_node = None
+    
+    def __repr__(self):
+        return f"(Data: {self.data}) -> {self.next_node}"
 
 class SinglyLinkedList:
 
