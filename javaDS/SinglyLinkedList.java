@@ -60,4 +60,25 @@ public class SinglyLinkedList {
 
         this.size += 1;
     }
+
+    @Override
+    public String toString() {
+        Node current = this.head;
+        String[] nodes = new String[this.size];
+
+        for(int index = 0; index < this.size; index++) {
+            if(current == this.head) {
+                nodes[0] = "Head[Data: " + current.data + "]";
+            } else if(current == this.tail) {
+                nodes[index] = "Tail[Data: " + current.data + "]";
+            }
+            else {
+                nodes[index] = "[Data: " + current.data + "]";
+            }
+
+            current = current.nextNode;
+        }
+
+        return "Linked List: (" + String.join("-> ", nodes) + ")";
+    }
 }
