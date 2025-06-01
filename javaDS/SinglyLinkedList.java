@@ -62,6 +62,14 @@ public class SinglyLinkedList {
     }
 
     @Override
+    /**
+     * String representation of SinglyLinkedList returns string of all nodes, but if the node is head or tail,
+     * it will make it have Head or Tail at the end respectively.
+     * 
+     * Running Time: O(1) + O(1) + O(n) + O(n) + O(n) + O(n) + O(n) + O(n) + O(n) + O(n) + O(n) = O(8n + 3) = O(n)
+     * But every linked list has only one head and one tail, thus it appends head and tail only once.
+     * Running Time: O(1) + O(1) + O(n) + O(n) + O(1) + O(n) + O(1) + O(n) + O(n) + O(n) + O(n) = O(6n + 5) = O(n)
+     */
     public String toString() {
         Node current = this.head;
         String[] nodes = new String[this.size];
