@@ -120,7 +120,7 @@ class SinglyLinkedList:
 
     def remove(self, value):
         """
-        Removes first Node of given value. If size is zero print error message, if size is one then call removeSolo().
+        Removes first Node of given value. If size is zero print error message, if size is one then call __remove_solo().
         If Node with given value is found then make current Node point to its grandchild.
 
         <h3>Running Time:</h3>
