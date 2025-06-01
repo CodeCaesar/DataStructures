@@ -23,10 +23,10 @@ class SinglyLinkedList:
         """
         Representation of SinglyLinkedList returns string of all nodes, but if the node is head or tail,
         it will make it have Head or Tail at the end respectively.
-
-        Running Time: O(1) + O(1) + O(n) + O(n) + O(n) + O(n) + O(n) + O(n) + O(n) + O(n) + O(n) = O(8n + 3) = O(n)
-        But every linked list has only one head and one tail, thus it appends head and tail only once.
-        Running Time: O(1) + O(1) + O(n) + O(n) + O(1) + O(n) + O(1) + O(n) + O(n) + O(n) + O(n) = O(6n + 5) = O(n)
+        
+        Running Time: O(1) + O(1) + O(n) + O(n) + O(n) + O(n) + O(n) + O(n) + O(n) + O(n) + O(n) = O(8n + 3) = <b>O(n)</b><p>
+        But every linked list has only one head and one tail, thus it appends head and tail only once.<p>
+        Running Time: O(1) + O(1) + O(n) + O(n) + O(1) + O(n) + O(1) + O(n) + O(n) + O(n) + O(n) = O(6n + 5) = <b>O(n)</b>
         """
         nodes = []
         current = self.head
@@ -44,18 +44,43 @@ class SinglyLinkedList:
         return f"Linked List: ({'-> '.join(nodes)})"
     
     def is_empty(self):
+        """
+        Checks if Linked List is empty.
+
+        Running Time: <b>O(1)</b>
+        """
         return self.size == 0
     
     def get_size(self):
+        """
+        Returns current size of Linked List.
+        
+        Running Time: <b>O(1)</b>
+        """
         return self.size
     
     def get_head(self):
-        return self.head
+        """
+        Returns head Node's value of Linked List.
+        
+        Running Time: <b>O(1)</b>
+        """
+        return self.head.data
     
     def get_tail(self):
-        return self.tail
+        """
+        Returns tail Node's value of Linked List.
+
+        Running Time: <b>O(1)</b>
+        """
+        return self.tail.data
     
     def append(self, value):
+        """
+        Appends Node of given value; <i>i.e. inserts Node of given value at the end.</i>
+
+        Running Time: O(1) + O(1) + O(1) + O(1) + O(1) + O(1) + O(1) + O(1) = O(9) = <b>O(1)</b>
+        """
         new_node = _Node(value)
 
         if self.head == None:
@@ -68,6 +93,11 @@ class SinglyLinkedList:
         self.size += 1
     
     def prepend(self, value):
+        """
+        Prepend Node of given value; <i>i.e. inserts Node of given value at the start.</i>
+
+        Running Time: O(1) + O(1) + O(1) + O(1) = O(4) = <b>O(1)</b>
+        """
         new_node = _Node(value)
         new_node.next_node = self.head
         self.head = new_node
@@ -75,6 +105,12 @@ class SinglyLinkedList:
         self.size += 1
     
     def __remove_solo(self, value):
+        """
+        Checks if Linked List's head has given value. If yes then make head and tail null and reduce size by one.
+        Else print error that Noce of given value wasn't found.
+
+        Running Time: O(1) + O(1) + O(1) + O(1) + O(1) + O(1) = O(6) = <b>O(1)</b>
+        """
         if self.head.data == value:
             self.head = None
             self.tail = None
@@ -83,6 +119,20 @@ class SinglyLinkedList:
             print(f'Node with value: "{value}" not found')
 
     def remove(self, value):
+        """
+        Removes first Node of given value. If size is zero print error message, if size is one then call removeSolo().
+        If Node with given value is found then make current Node point to its grandchild.
+
+        <h3>Running Time:</h3>
+        Best Case: O(1) + O(1) + O(1) = O(3) = <b>O(1)</b> <p>
+        Element-Found Case: O(1) + O(1) + O(1) + O(1) + O(6) + O(1) + O(1) + O(1) + O(1) + O(1) + O(1) + O(n) + O(n) + O(1) + O(1) + O(1) + O(n) 
+        = O(3n + 19) = <b>O(n)</b> <p>
+        Element-Not-Found Case: O(1) + O(1) + O(1) + O(1) + O(6) + O(1) + O(1) + O(1) + O(1) + O(1) + O(1) + O(n) + O(n) + O(n) + O(1) 
+        = O(3n + 17) = <b>O(n)</b><p>
+        Even tho Element-Found case has time complexity of O(3n + 19) which is larger than Element-Not-Found case's time complexity of O(3n + 17). 
+        Most of the time removed Node will not be tail, thus in most cases it wouldn't have go through entire Linked List, making Element-Not-Found case
+        worse overall.
+        """
         if self.size == 0:
             print("Linked List is empty")
             return
