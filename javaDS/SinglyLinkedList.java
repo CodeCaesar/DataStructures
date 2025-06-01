@@ -61,6 +61,48 @@ public class SinglyLinkedList {
         this.size += 1;
     }
 
+    private void removeSolo(int value) {
+        if(this.head.data == value) {
+            this.head = null;
+            this.tail = null;
+            this.size -= 1;
+        } else {
+            System.err.println("Node with value: '" + value + "' not found");
+        }
+    }
+
+    public void remove(int value) {
+        if(this.size == 0) {
+            System.err.println("Linked List is empty");
+            return;
+        }
+
+        if(this.size == 1) {
+            removeSolo(value);
+            return;
+        }
+        
+        Node current = this.head;
+
+        if(current.data == value) {
+            this.head = this.head.nextNode;
+            this.size -= 1;
+            return;
+        }
+
+        while(current.nextNode != null) {
+            if(current.nextNode.data == value) {
+                current.nextNode = current.nextNode.nextNode;
+                this.size -= 1;
+                return;
+            }
+
+            current = current.nextNode;
+        }
+        
+        System.err.println("Node with value: '" + value + "' not found");
+    }
+
     /**
      * String representation of SinglyLinkedList returns string of all nodes, but if the node is head or tail,
      * it will make it have Head or Tail at the end respectively.
