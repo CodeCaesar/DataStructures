@@ -66,22 +66,4 @@ public abstract class BinaryTree {
     public void postorder() {
         postorder(this.root);
     }
-
-    /**
-     * TEMPORARY METHOD
-     * <p>
-     * Only For Used Testing
-     */
-    public void makeRoot(int key) {
-        this.root = new Node(key);
-    }
-
-    /**
-     * TEMPORARY METHOD
-     * <p>
-     * Only For Used Testing
-     */
-    public void makeLeft(int key) {
-        this.root.left = new Node(key);
-    }
 }

@@ -29,7 +29,7 @@ public class Main {
 
         BinarySearchTree BST = new BinarySearchTree();
 
-        /*BST.insert(5);
+        BST.insert(5);
         BST.insert(2);
         BST.insert(8);
         BST.insert(12);
@@ -41,7 +41,7 @@ public class Main {
         System.out.println("preorder:");
         BST.preorder();
         System.out.println("postorder:");
-        BST.postorder();*/
+        BST.postorder();
 
         System.out.println("Max: " + BST.max() + ", Min: " + BST.min());
     }
