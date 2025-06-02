@@ -1,8 +1,10 @@
 package javaDS;
 
+import javaDS.Trees.BinarySearchTree;
+
 public class Main {
     public static void main(String[] args) {
-        SinglyLinkedList LinkedList = new SinglyLinkedList();
+        /*SinglyLinkedList LinkedList = new SinglyLinkedList();
 
         LinkedList.append(5);
         LinkedList.append(3);
@@ -23,6 +25,10 @@ public class Main {
         LinkedList.remove(6);
         LinkedList.remove(6);
 
-        System.out.println(LinkedList);
+        System.out.println(LinkedList);*/
+
+        BinarySearchTree BST = new BinarySearchTree();
+
+        System.out.println(BST.getHeight());
     }
 }
