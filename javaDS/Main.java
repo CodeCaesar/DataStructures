@@ -28,7 +28,5 @@ public class Main {
         System.out.println(LinkedList);*/
 
         BinarySearchTree BST = new BinarySearchTree();
-
-        System.out.println(BST.getHeight());
     }
 }
