@@ -72,8 +72,8 @@ public class BinarySearchTree extends BinaryTree {
         }
     }
 
-    public void insert(int key) {
-        Node newNode = new Node(key);
+    public void insert(int key, Object data) {
+        Node newNode = new Node(key, data);
 
         insert(newNode);
     }

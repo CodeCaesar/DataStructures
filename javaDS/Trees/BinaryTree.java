@@ -5,14 +5,16 @@ public abstract class BinaryTree {
     protected Node root;
     protected int height;
     
-    protected class Node {
+    protected class Node<Data> {
         protected int key;
+        protected Data data;
         protected Node parent = null;
         protected Node left = null;
         protected Node right = null;
 
-        protected Node(int key) {
+        protected Node(int key, Data data) {
             this.key = key;
+            this.data = data;
         }
 
         @Override

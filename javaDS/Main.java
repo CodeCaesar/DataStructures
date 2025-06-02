@@ -29,12 +29,12 @@ public class Main {
 
         BinarySearchTree BST = new BinarySearchTree();
 
-        BST.insert(5);
-        BST.insert(2);
-        BST.insert(8);
-        BST.insert(12);
-        BST.insert(7);
-        BST.insert(3);
+        BST.insert(5, "h341f");
+        BST.insert(2,"hello world");
+        BST.insert(8, "java");
+        BST.insert(12, "1100");
+        BST.insert(7, "lucky");
+        BST.insert(3, "0011");
 
         System.out.println("inorder:");
         BST.inorder();
