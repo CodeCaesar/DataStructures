@@ -12,4 +12,14 @@ public class BinarySearchTree extends BinaryTree {
 
         return current.data;
     }
+
+    public int max() {
+        Node current = this.root;
+
+        while(current != null) {
+            current = current.right;
+        }
+
+        return current.data;
+    }
 }
