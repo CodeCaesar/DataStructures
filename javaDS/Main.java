@@ -29,10 +29,18 @@ public class Main {
 
         BinarySearchTree BST = new BinarySearchTree();
 
-        System.out.println(BST.getHeight());
-        BST.makeRoot(24);
-        BST.makeLeft(12);
+        BST.insert(5);
+        BST.insert(2);
+        BST.insert(8);
+        BST.insert(12);
+        BST.insert(7);
+        BST.insert(3);
+
+        System.out.println("inorder:");
         BST.inorder();
+        System.out.println("preorder:");
         BST.preorder();
+        System.out.println("postorder:");
+        BST.postorder();
     }
 }

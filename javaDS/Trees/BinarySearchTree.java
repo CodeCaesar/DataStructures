@@ -38,4 +38,35 @@ public class BinarySearchTree extends BinaryTree {
 
         return current.data;
     }
+
+    private void insert(Node newNode) {
+        Node parent = null;
+        Node child = this.root;
+
+        while(child != null) {
+            parent = child;
+
+            if(newNode.data < child.data) {
+                child = child.left;
+            } else {
+                child = child.right;
+            }
+        }
+
+        newNode.parent = parent;
+
+        if(parent == null) {
+            this.root = newNode;
+        } else if(newNode.data < parent.data) {
+            parent.left = newNode;
+        } else {
+            parent.right = newNode;
+        }
+    }
+
+    public void insert(int key) {
+        Node newNode = new Node(key);
+
+        insert(newNode);
+    }
 }
