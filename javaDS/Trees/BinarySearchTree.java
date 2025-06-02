@@ -22,7 +22,11 @@ public class BinarySearchTree extends BinaryTree {
     public int min() {
         Node current = this.root;
 
-        while(current != null) {
+        if(current == null) {
+            return 0;
+        }
+
+        while(current.left != null) {
             current = current.left;
         }
 
@@ -32,7 +36,11 @@ public class BinarySearchTree extends BinaryTree {
     public int max() {
         Node current = this.root;
 
-        while(current != null) {
+        if(current == null) {
+            return 0;
+        }
+
+        while(current.right != null) {
             current = current.right;
         }
 
