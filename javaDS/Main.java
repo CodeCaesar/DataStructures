@@ -30,5 +30,8 @@ public class Main {
         BinarySearchTree BST = new BinarySearchTree();
 
         System.out.println(BST.getHeight());
+        BST.makeRoot(24);
+        BST.makeLeft(12);
+        BST.inorder();
     }
 }

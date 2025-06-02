@@ -30,4 +30,34 @@ public abstract class BinaryTree {
     public int getRoot() {
         return this.root.data;
     }
+
+    private void inorder(Node current) {
+        if(current != null) {
+            inorder(current.left);
+            System.out.println(current.data);
+            inorder(current.right);
+        }
+    }
+    
+    public void inorder() {
+        inorder(this.root);
+    }
+
+    /**
+     * TEMPORARY METHOD
+     * <p>
+     * Only For Used Testing
+     */
+    public void makeRoot(int key) {
+        this.root = new Node(key);
+    }
+
+    /**
+     * TEMPORARY METHOD
+     * <p>
+     * Only For Used Testing
+     */
+    public void makeLeft(int key) {
+        this.root.left = new Node(key);
+    }
 }
