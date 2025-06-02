@@ -22,4 +22,12 @@ public abstract class BinaryTree {
     }
 
     protected BinaryTree() {}
+
+    public int getHeight() {
+        return this.height;
+    }
+
+    public int getRoot() {
+        return this.root.data;
+    }
 }
