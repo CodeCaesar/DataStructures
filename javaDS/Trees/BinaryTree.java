@@ -43,6 +43,18 @@ public abstract class BinaryTree {
         inorder(this.root);
     }
 
+    private void preorder(Node current) {
+        if(current != null) {
+            System.out.println(current.data);
+            preorder(current.left);
+            preorder(current.right);
+        }
+    }
+    
+    public void preorder() {
+        preorder(this.root);
+    }
+
     /**
      * TEMPORARY METHOD
      * <p>

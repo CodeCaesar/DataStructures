@@ -33,5 +33,6 @@ public class Main {
         BST.makeRoot(24);
         BST.makeLeft(12);
         BST.inorder();
+        BST.preorder();
     }
 }
