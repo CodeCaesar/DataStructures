@@ -6,9 +6,9 @@ public class BinarySearchTree extends BinaryTree {
     private boolean has(int key, Node current) {
         if(current == null) {
             return false;
-        } else if(current.data == key) {
+        } else if(current.key == key) {
             return true;
-        } else if(key < current.data) {
+        } else if(key < current.key) {
             return has(key, current.left);
         } else {
             return has(key, current.right);
@@ -30,7 +30,7 @@ public class BinarySearchTree extends BinaryTree {
             current = current.left;
         }
 
-        return current.data;
+        return current.key;
     }
 
     public int max() {
@@ -44,7 +44,7 @@ public class BinarySearchTree extends BinaryTree {
             current = current.right;
         }
 
-        return current.data;
+        return current.key;
     }
 
     private void insert(Node newNode) {
@@ -54,7 +54,7 @@ public class BinarySearchTree extends BinaryTree {
         while(child != null) {
             parent = child;
 
-            if(newNode.data < child.data) {
+            if(newNode.key < child.key) {
                 child = child.left;
             } else {
                 child = child.right;
@@ -65,7 +65,7 @@ public class BinarySearchTree extends BinaryTree {
 
         if(parent == null) {
             this.root = newNode;
-        } else if(newNode.data < parent.data) {
+        } else if(newNode.key < parent.key) {
             parent.left = newNode;
         } else {
             parent.right = newNode;

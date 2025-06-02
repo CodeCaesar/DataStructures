@@ -6,18 +6,18 @@ public abstract class BinaryTree {
     protected int height;
     
     protected class Node {
-        protected int data;
+        protected int key;
         protected Node parent = null;
         protected Node left = null;
         protected Node right = null;
 
-        protected Node(int data) {
-            this.data = data;
+        protected Node(int key) {
+            this.key = key;
         }
 
         @Override
         public String toString() {
-            return "{" + this.left.toString() + "} <-[" + this.data + "]-> {" + this.right.toString() + "}";
+            return "{" + this.left.toString() + "} <-[" + this.key + "]-> {" + this.right.toString() + "}";
         }
     }
 
@@ -28,13 +28,13 @@ public abstract class BinaryTree {
     }
 
     public int getRoot() {
-        return this.root.data;
+        return this.root.key;
     }
 
     private void inorder(Node current) {
         if(current != null) {
             inorder(current.left);
-            System.out.println(current.data);
+            System.out.println(current.key);
             inorder(current.right);
         }
     }
@@ -45,7 +45,7 @@ public abstract class BinaryTree {
 
     private void preorder(Node current) {
         if(current != null) {
-            System.out.println(current.data);
+            System.out.println(current.key);
             preorder(current.left);
             preorder(current.right);
         }
@@ -59,7 +59,7 @@ public abstract class BinaryTree {
         if(current != null) {
             postorder(current.left);
             postorder(current.right);
-            System.out.println(current.data);
+            System.out.println(current.key);
         }
     }
     
