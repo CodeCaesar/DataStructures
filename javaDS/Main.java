@@ -44,5 +44,8 @@ public class Main {
         BST.postorder();
 
         System.out.println("Max: " + BST.max() + ", Min: " + BST.min());
+
+        System.out.println(BST.search(7));
+        System.out.println(BST.search(1));
     }
 }

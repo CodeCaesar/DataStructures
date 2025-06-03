@@ -19,6 +19,22 @@ public class BinarySearchTree extends BinaryTree {
         return has(key, this.root);
     }
 
+    private Object search(int target, Node current) {
+        if(current == null) {
+            return null;
+        } else if(current.key == target) {
+            return current.data;
+        } else if(target < current.key) {
+            return search(target, current.left);
+        } else {
+            return search(target, current.right);
+        }
+    }
+
+    public Object search(int target) {
+        return search(target, this.root);
+    }
+
     public int min() {
         Node current = this.root;
 
