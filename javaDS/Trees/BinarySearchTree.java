@@ -165,4 +165,9 @@ public class BinarySearchTree extends BinaryTree {
             successor.left.parent = successor;
         }
     }
+
+    @Override
+    public String toString() {
+        return this.root.toString();
+    }
 }

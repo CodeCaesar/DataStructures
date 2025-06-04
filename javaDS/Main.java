@@ -48,6 +48,8 @@ public class Main {
         System.out.println(BST.search(7));
         System.out.println(BST.search(1));
 
+        System.out.println(BST);
+
         //BST.delete(7);
         BST.delete(5);
 
@@ -62,5 +64,7 @@ public class Main {
 
         System.out.println(BST.search(7));
         System.out.println(BST.search(1));
+
+        System.out.println(BST);
     }
 }

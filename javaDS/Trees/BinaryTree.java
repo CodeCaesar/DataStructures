@@ -19,7 +19,22 @@ public abstract class BinaryTree {
 
         @Override
         public String toString() {
-            return "{" + this.left.toString() + "} <-[" + this.key + "]-> {" + this.right.toString() + "}";
+            String leftString;
+            String rightString;
+
+            if(this.left == null) {
+                leftString = "Null";
+            } else {
+                leftString = this.left.toString();
+            }
+
+            if(this.right == null) {
+                rightString = "Null";
+            } else {
+                rightString = this.right.toString();
+            }
+
+            return "{" + leftString + "} <-[" + this.key + "]-> {" + rightString + "}";
         }
     }
 
