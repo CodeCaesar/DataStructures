@@ -3,7 +3,7 @@ package javaDS.Trees;
 public abstract class BinaryTree {
     
     protected Node root;
-    protected int height;
+    protected int size;
     
     protected class Node<Data> {
         protected int key;
@@ -40,8 +40,8 @@ public abstract class BinaryTree {
 
     protected BinaryTree() {}
 
-    public int getHeight() {
-        return this.height;
+    public int getSize() {
+        return this.size;
     }
 
     public int getRoot() {

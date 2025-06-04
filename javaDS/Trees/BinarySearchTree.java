@@ -128,6 +128,7 @@ public class BinarySearchTree extends BinaryTree {
         Node newNode = new Node(key, data);
 
         insert(newNode);
+        this.size += 1;
     }
 
     private void transplant(Node removedNode, Node transplantedNode) {
@@ -164,6 +165,8 @@ public class BinarySearchTree extends BinaryTree {
             successor.left = deleteNode.left;
             successor.left.parent = successor;
         }
+
+        this.size -= 1;
     }
 
     @Override
