@@ -42,7 +42,27 @@ public class RedBlackTree extends BinarySearchTree {
 
     public RedBlackTree() {}
 
-    private void leftRotate() {}
+    private void leftRotate(Node newRightChild) {
+        Node newParent = newRightChild.right;
+        newRightChild.right = newParent.left;
+
+        if(newParent.left != this.nil) {
+            newParent.left.parent = newRightChild;
+        }
+
+        newParent.parent = newRightChild.parent;
+
+        if(newRightChild.parent == this.nil) {
+            this.root = newParent;
+        } else if(newRightChild == newRightChild.parent.left) {
+            newRightChild.parent.left = newParent;
+        } else {
+            newRightChild.parent.right = newParent;
+        }
+
+        newParent.left = newRightChild;
+        newRightChild.parent = newParent;
+    }
 
     private void rightRotate() {}
 
