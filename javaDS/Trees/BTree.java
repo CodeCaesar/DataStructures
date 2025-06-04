@@ -14,6 +14,11 @@ public class BTree extends BinaryTree {
 
         protected Node(int[] keys) {
             this.keys = keys;
+            this.leaf = true;
+        }
+
+        protected Node() {
+            this.leaf = true;
         }
 
         @Override
@@ -44,5 +49,37 @@ public class BTree extends BinaryTree {
 
     public boolean has(int targetKey) {
         return has(this.root, targetKey);
+    }
+
+    private void splitChild(Node parent, int index) {
+        Node extraChild = new Node();
+        Node child = parent.children[index];
+        extraChild.leaf = child.leaf;
+        extraChild.keysStored = minDegree - 1;
+
+        for(int keyIndex = 0; keyIndex < minDegree - 1; keyIndex++) {
+            extraChild.keys[keyIndex] = child.keys[keyIndex + minDegree];
+        }
+
+        if(!child.leaf) {
+            for(int childIndex = 0; childIndex < minDegree; childIndex++) {
+                extraChild.children[childIndex] = child.children[childIndex + minDegree];
+            }
+        }
+
+        child.keysStored = minDegree - 1;
+
+        for(int updateChildren = parent.keysStored; updateChildren > index; updateChildren--) {
+            parent.children[updateChildren + 1] = parent.children[updateChildren];
+        }
+
+        parent.children[index + 1] = extraChild;
+
+        for(int updateKeys = parent.keysStored - 1; updateKeys > index - 1; updateKeys--) {
+            parent.keys[updateKeys] = parent.keys[updateKeys + minDegree];
+        }
+
+        parent.keys[index] = child.keys[minDegree - 1];
+        parent.keysStored = parent.keysStored + 1;
     }
 }
