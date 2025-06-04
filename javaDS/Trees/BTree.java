@@ -3,15 +3,14 @@ package javaDS.Trees;
 public abstract class BTree extends BinarySearchTree {
     protected int minDegree;
 
-    protected class Node<Data> {
+    protected class Node {
         protected int keysStored;
         protected int[] key = new int[minDegree * 2 - 1];
-        protected Data data;
         protected Node[] children;
+        protected boolean leaf;
 
-        protected Node(int[] key, Data data) {
+        protected Node(int[] key) {
             this.key = key;
-            this.data = data;
         }
 
         @Override
