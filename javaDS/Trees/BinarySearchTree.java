@@ -35,6 +35,20 @@ public class BinarySearchTree extends BinaryTree {
         return search(target, this.root);
     }
 
+    private Node getNode(int key) {
+        Node current = this.root;
+
+        while(current != null && key != current.key) {
+            if(key < current.key) {
+                current = current.left;
+            } else {
+                current = current.right;
+            }
+        }
+
+        return current;
+    }
+
     public int min() {
         Node current = this.root;
 
@@ -113,6 +127,28 @@ public class BinarySearchTree extends BinaryTree {
 
         if(transplantedNode != null) {
             transplantedNode.parent = removedNode.parent;
+        }
+    }
+
+    public void delete(int key) {
+        Node deleteNode = getNode(key);
+
+        if(deleteNode.left == null) {
+            transplant(deleteNode, deleteNode.right);
+        } else if(deleteNode.right == null) {
+            transplant(deleteNode, deleteNode.left);
+        } else {
+            Node successor = min(deleteNode.right);
+
+            if(successor.parent != deleteNode) {
+                transplant(successor, successor.right);
+                successor.right = deleteNode.right;
+                successor.right.parent = successor;
+            }
+
+            transplant(deleteNode, successor);
+            successor.left = deleteNode.left;
+            successor.left.parent = successor;
         }
     }
 }

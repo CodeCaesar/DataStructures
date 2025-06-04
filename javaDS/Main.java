@@ -47,5 +47,20 @@ public class Main {
 
         System.out.println(BST.search(7));
         System.out.println(BST.search(1));
+
+        //BST.delete(7);
+        BST.delete(5);
+
+        System.out.println("inorder:");
+        BST.inorder();
+        System.out.println("preorder:");
+        BST.preorder();
+        System.out.println("postorder:");
+        BST.postorder();
+
+        System.out.println("Max: " + BST.max() + ", Min: " + BST.min());
+
+        System.out.println(BST.search(7));
+        System.out.println(BST.search(1));
     }
 }
