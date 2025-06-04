@@ -35,6 +35,20 @@ public class BinarySearchTree extends BinaryTree {
         return search(target, this.root);
     }
 
+    public Object iterativeSearch(int target) {
+        Node current = this.root;
+
+        while(current != null && target != current.key) {
+            if(target < current.key) {
+                current = current.left;
+            } else {
+                current = current.right;
+            }
+        }
+
+        return current.data;
+    }
+
     private Node getNode(int key) {
         Node current = this.root;
 
