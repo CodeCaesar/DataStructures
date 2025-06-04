@@ -63,6 +63,14 @@ public class BinarySearchTree extends BinaryTree {
         return current.key;
     }
 
+    private Node min(Node current) {
+        while(current.left != null) {
+            current = current.left;
+        }
+
+        return current;
+    }
+
     private void insert(Node newNode) {
         Node parent = null;
         Node child = this.root;
@@ -92,5 +100,19 @@ public class BinarySearchTree extends BinaryTree {
         Node newNode = new Node(key, data);
 
         insert(newNode);
+    }
+
+    private void transplant(Node removedNode, Node transplantedNode) {
+        if(removedNode.parent == null) {
+            this.root = transplantedNode;
+        } else if(removedNode == removedNode.parent.left) {
+            removedNode.parent.left = transplantedNode;
+        } else {
+            removedNode.parent.right = transplantedNode;
+        }
+
+        if(transplantedNode != null) {
+            transplantedNode.parent = removedNode.parent;
+        }
     }
 }
