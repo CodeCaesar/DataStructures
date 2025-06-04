@@ -1,6 +1,7 @@
 package javaDS;
 
 import javaDS.Trees.BinarySearchTree;
+import javaDS.Trees.RedBlackTree;
 
 public class Main {
     public static void main(String[] args) {
@@ -27,7 +28,7 @@ public class Main {
 
         System.out.println(LinkedList);*/
 
-        BinarySearchTree BST = new BinarySearchTree();
+        RedBlackTree BST = new RedBlackTree();
 
         BST.insert(5, "h341f");
         BST.insert(2,"hello world");
