@@ -83,4 +83,26 @@ public abstract class BinaryTree {
     public void postorder() {
         postorder(this.root);
     }
+
+    private int maxHeight(int height1, int height2) {
+        if(height1 >= height2) {
+            return height1;
+        } else {
+            return height2;
+        }
+    }
+
+    private int height(Node current) {
+        if(current == null) {
+            return 0;
+        } else if(current.left == null && current.right == null) {
+            return 0;
+        }
+
+        return maxHeight(height(current.left), height(current.right)) + 1;
+    }
+
+    public int height() {
+        return height(this.root);
+    }
 }

@@ -66,5 +66,7 @@ public class Main {
         System.out.println(BST.search(1));
 
         System.out.println(BST);
+
+        System.out.println(BST.height());
     }
 }
