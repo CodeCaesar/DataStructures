@@ -89,46 +89,54 @@ public class RedBlackTree extends BinarySearchTree {
         newLeftChild.parent = newParent;
     }
 
+    private void fixupCaseA(Node newNode) {
+        Node uncle = newNode.parent.parent.right;
+
+        if(uncle.colour == Colours.RED) { // CASE 1
+            newNode.parent.colour = Colours.BLACK;
+            uncle.colour = Colours.BLACK;
+            newNode.parent.parent.colour = Colours.RED;
+            newNode = newNode.parent.parent;
+        } else {
+            if(newNode == newNode.parent.right) { // CASE 2
+                newNode = newNode.parent;
+                leftRotate(newNode);
+            }
+
+            // CASE 2 & 3
+            newNode.parent.colour = Colours.BLACK;
+            newNode.parent.parent.colour = Colours.RED;
+            rightRotate(newNode.parent.parent);
+        }
+    }
+
+    private void fixupCaseB(Node newNode) {
+        Node uncle = newNode.parent.parent.left;
+
+        if(uncle.colour == Colours.RED) { // CASE 1
+            newNode.parent.colour = Colours.BLACK;
+            uncle.colour = Colours.BLACK;
+            newNode.parent.parent.colour = Colours.RED;
+            newNode = newNode.parent.parent;
+        } else {
+            if(newNode == newNode.parent.left) { // CASE 2
+                newNode = newNode.parent;
+                rightRotate(newNode);
+            }
+
+            // CASE 2 & 3
+            newNode.parent.colour = Colours.BLACK;
+            newNode.parent.parent.colour = Colours.RED;
+            leftRotate(newNode.parent.parent);
+        }
+    }
+
     private void fixup(Node newNode) {
         while(newNode.parent.colour == Colours.RED) {
             if(newNode.parent == newNode.parent.parent.left) {
-                Node uncle = newNode.parent.parent.right;
-
-                if(uncle.colour == Colours.RED) { // CASE 1
-                    newNode.parent.colour = Colours.BLACK;
-                    uncle.colour = Colours.BLACK;
-                    newNode.parent.parent.colour = Colours.RED;
-                    newNode = newNode.parent.parent;
-                } else {
-                    if(newNode == newNode.parent.right) { // CASE 2
-                        newNode = newNode.parent;
-                        leftRotate(newNode);
-                    }
-
-                    // CASE 2 & 3
-                    newNode.parent.colour = Colours.BLACK;
-                    newNode.parent.parent.colour = Colours.RED;
-                    rightRotate(newNode.parent.parent);
-                }
+                fixupCaseA(newNode);
             } else {
-                Node uncle = newNode.parent.parent.left;
-
-                if(uncle.colour == Colours.RED) { // CASE 1
-                    newNode.parent.colour = Colours.BLACK;
-                    uncle.colour = Colours.BLACK;
-                    newNode.parent.parent.colour = Colours.RED;
-                    newNode = newNode.parent.parent;
-                } else {
-                    if(newNode == newNode.parent.left) { // CASE 2
-                        newNode = newNode.parent;
-                        rightRotate(newNode);
-                    }
-
-                    // CASE 2 & 3
-                    newNode.parent.colour = Colours.BLACK;
-                    newNode.parent.parent.colour = Colours.RED;
-                    leftRotate(newNode.parent.parent);
-                }
+                fixupCaseB(newNode);
             }
         }
 
