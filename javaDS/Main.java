@@ -52,7 +52,7 @@ public class Main {
         System.out.println(BST);
 
         //BST.delete(7);
-        BST.delete(5);
+        /*BST.delete(5);
 
         System.out.println("inorder:");
         BST.inorder();
@@ -66,7 +66,7 @@ public class Main {
         System.out.println(BST.search(7));
         System.out.println(BST.search(1));
 
-        System.out.println(BST);
+        System.out.println(BST);*/
 
         System.out.println(BST.height());
     }
