@@ -105,6 +105,62 @@ class DoublyLinkedList:
         self.head = new_node
 
         self.size += 1
+    
+    def __remove_solo(self, value):
+        """
+        Checks if Linked List's head has given value. If yes then make head and tail null and reduce size by one.
+        Else print error that Noce of given value wasn't found.
+
+        Running Time: O(1) + O(1) + O(1) + O(1) + O(1) + O(1) = O(6) = <b>O(1)</b>
+        """
+        if self.head.data == value:
+            self.head = None
+            self.tail = None
+            self.size -= 1
+        else:
+            print(f'Node with value: "{value}" not found')
+
+    def remove(self, value):
+        """
+        Removes first Node of given value. If size is zero print error message, if size is one then call __remove_solo().
+        If Node with given value is found then make current Node point to its grandchild.
+
+        <h3>Running Time:</h3>
+        Best Case: O(1) + O(1) + O(1) = O(3) = <b>O(1)</b> <p>
+        Element-Found Case: O(1) + O(1) + O(1) + O(1) + O(6) + O(1) + O(1) + O(1) + O(1) + O(1) + O(1) + O(1) + O(n) + O(n) + O(1) + O(1) + O(1) + O(1) + O(1) + O(n) 
+        = O(3n + 22) = <b>O(n)</b> <p>
+        Element-Not-Found Case: O(1) + O(1) + O(1) + O(1) + O(6) + O(1) + O(1) + O(1) + O(n) + O(n) + O(n) + O(1) 
+        = O(3n + 14) = <b>O(n)</b><p>
+        """
+        if self.size == 0:
+            print("Linked List is empty")
+            return
+
+        if self.size == 1:
+            self.__remove_solo(value)
+            return
+        
+        current = self.head
+
+        if current.data == value:
+            self.head = self.head.next_node
+            self.head.prev_node = None
+            self.size -= 1
+            return
+
+        while current.next_node:
+            if current.next_node.data == value:
+                current.next_node = current.next_node.next_node
+
+                if current.next_node:
+                    current.next_node.prev_node = current
+                
+                self.size -= 1
+                return
+
+            current = current.next_node
+        
+        print(f'Node with value: "{value}" not found')
 
 list = DoublyLinkedList()
 list.append(5)
@@ -114,5 +170,9 @@ list.append(9)
 list.append(4)
 list.append(3)
 list.prepend(7)
+list.remove(7)
+list.remove(4)
+list.remove(3)
+list.remove(942)
 
 print(list)
