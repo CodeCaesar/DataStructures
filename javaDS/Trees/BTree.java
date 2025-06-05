@@ -80,6 +80,36 @@ public class BTree extends BinaryTree {
         }
 
         parent.keys[index] = child.keys[minDegree - 1];
-        parent.keysStored = parent.keysStored + 1;
+        parent.keysStored += 1;
+    }
+
+    private void insertNonfull(Node target, int key) {
+        int index = target.keysStored - 1;
+
+        if(target.leaf) {
+            while(index >= 0 && key < target.keys[index]) {
+                target.keys[index + 1] = target.keys[index];
+                index -= 1;
+            }
+
+            target.keys[index + 1] = key;
+            target.keysStored += 1;
+        } else {
+            while(index >= 0 && key < target.keys[index]) {
+                index -= 1;
+            }
+
+            index += 1;
+            
+            if(target.children[index].keysStored == maxDegree) {
+                splitChild(target, index);
+
+                if(key > target.keys[index]) {
+                    index += 1;
+                }
+            }
+
+            insertNonfull(target.children[index], key);
+        }
     }
 }
