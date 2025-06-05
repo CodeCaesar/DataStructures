@@ -83,33 +83,50 @@ public class BTree extends BinaryTree {
         parent.keysStored += 1;
     }
 
-    private void insertNonfull(Node target, int key) {
-        int index = target.keysStored - 1;
+    private void insertNonfull(Node current, int key) {
+        int index = current.keysStored - 1;
 
-        if(target.leaf) {
-            while(index >= 0 && key < target.keys[index]) {
-                target.keys[index + 1] = target.keys[index];
+        if(current.leaf) {
+            while(index >= 0 && key < current.keys[index]) {
+                current.keys[index + 1] = current.keys[index];
                 index -= 1;
             }
 
-            target.keys[index + 1] = key;
-            target.keysStored += 1;
+            current.keys[index + 1] = key;
+            current.keysStored += 1;
         } else {
-            while(index >= 0 && key < target.keys[index]) {
+            while(index >= 0 && key < current.keys[index]) {
                 index -= 1;
             }
 
             index += 1;
             
-            if(target.children[index].keysStored == maxDegree) {
-                splitChild(target, index);
+            if(current.children[index].keysStored == maxDegree) {
+                splitChild(current, index);
 
-                if(key > target.keys[index]) {
+                if(key > current.keys[index]) {
                     index += 1;
                 }
             }
 
-            insertNonfull(target.children[index], key);
+            insertNonfull(current.children[index], key);
+        }
+    }
+
+    public void insert(int key) {
+        Node rut = this.root;
+
+        if(rut.keysStored == maxDegree) {
+            Node newNode = new Node();
+            this.root = newNode;
+            newNode.leaf = false;
+            newNode.keysStored = 0;
+            newNode.children[0] = rut;
+
+            splitChild(newNode, 0);
+            insertNonfull(newNode, key);
+        } else {
+            insertNonfull(this.root, key);
         }
     }
 }
