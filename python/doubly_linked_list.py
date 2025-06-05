@@ -20,9 +20,6 @@ class DoublyLinkedList(LinkedList):
 
     def __init__(self):
         super().__init__()
-        self.head = None
-        self.tail = None
-        self.size = 0
     
     def __repr__(self):
         """
