@@ -157,21 +157,36 @@ public class BTree extends BinaryTree {
     }
 
     private String[] stringKeys(Node node, int[] keys) {
-            String[] keyArray = new String[node.keysStored];
+        String[] keyArray = new String[node.keysStored];
 
-            for(int index = 0; index < node.keysStored; index++) {
-                keyArray[index] = "" + node.keys[index];
-            }
-
-            return keyArray;
+        for(int index = 0; index < node.keysStored; index++) {
+            keyArray[index] = "" + node.keys[index];
         }
+
+        return keyArray;
+    }
+
+    private void inorder(Node current) {
+        if(current != null) {
+            int totalKeysChildren = 2 * current.keysStored + 1;
+
+            for(int index = 0; index < totalKeysChildren; index++) {
+                if(index % 2 == 0) {
+                    inorder(current.children[index / 2]);
+                } else {
+                    System.out.println(current.keys[index / 2]);
+                }
+            }
+        }
+    }
+
+    @Override
+    public void inorder() {
+        inorder(this.root);
+    }
 
     private void preorder(Node current) {
         if(current != null) {
-            /*for(int index = 0; index < current.keysStored; index++) {
-                System.out.println(String.join(",", stringKeys(current, current.keys)));
-            }*/
-
             System.out.println(String.join(",", stringKeys(current, current.keys)));
 
             for(int index = 0; index < current.keysStored + 1; index++) {
