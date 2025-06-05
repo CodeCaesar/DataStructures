@@ -50,3 +50,21 @@ class DoublyLinkedList:
         Running Time: <b>O(1)</b>
         """
         return self.tail.data
+    
+    def append(self, value):
+        """
+        Appends Node of given value; <i>i.e. inserts Node of given value at the end.</i>
+
+        Running Time: O(1) + O(1) + O(1) + O(1) + O(1) + O(1) + O(1) + O(1) + O(1) = O(9) = <b>O(1)</b>
+        """
+        new_node = _Node(value)
+
+        if self.head == None:
+            self.head = new_node
+            self.tail = self.head
+        else:
+            self.tail.next_node = new_node
+            new_node.prev_node = self.tail
+            self.tail = self.tail.next_node
+        
+        self.size += 1
