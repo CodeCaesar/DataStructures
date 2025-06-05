@@ -6,6 +6,7 @@ public class BTree extends BinaryTree {
     protected int maxDegree;
     protected Node root;
     protected int size;
+    protected int height;
 
     protected class Node {
         protected int keysStored;
@@ -106,6 +107,7 @@ public class BTree extends BinaryTree {
 
         parent.keys[index] = child.keys[minDegree - 1];
         parent.keysStored += 1;
+        this.height += 1;
         fixNode(child);
     }
 
@@ -141,6 +143,7 @@ public class BTree extends BinaryTree {
 
     public void insert(int key) {
         Node rut = this.root;
+        this.size += 1;
 
         if(rut.keysStored == maxDegree) {
             Node newNode = new Node();
