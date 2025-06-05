@@ -99,6 +99,6 @@ public class Main {
         System.out.println("preorder:");
         BT.preorder();
         System.out.println("postorder:");
-        //BT.postorder();
+        BT.postorder();
     }
 }

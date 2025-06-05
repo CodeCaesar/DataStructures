@@ -185,6 +185,21 @@ public class BTree extends BinaryTree {
         preorder(this.root);
     }
 
+    private void postorder(Node current) {
+        if(current != null) {
+            for(int index = 0; index < current.keysStored + 1; index++) {
+                postorder(current.children[index]);
+            }
+
+            System.out.println(String.join(",", stringKeys(current, current.keys)));
+        }
+    }
+
+    @Override
+    public void postorder() {
+        postorder(this.root);
+    }
+
     @Override
     public String toString() {
         return this.root.toString();
