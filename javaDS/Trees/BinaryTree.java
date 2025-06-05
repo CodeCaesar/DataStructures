@@ -105,4 +105,8 @@ public abstract class BinaryTree {
     public int height() {
         return height(this.root);
     }
+
+    public int size() {
+        return this.size;
+    }
 }
