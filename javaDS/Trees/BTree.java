@@ -66,6 +66,12 @@ public class BTree extends BinaryTree {
         return has(this.root, targetKey);
     }
 
+    private void fixNode(Node brokenNode) {
+        for(int index = this.maxDegree - 1; index >= brokenNode.keysStored; index--) {
+            brokenNode.keys[index] = 0;
+        }
+    }
+
     private void splitChild(Node parent, int index) {
         Node extraChild = new Node();
         Node child = parent.children[index];
@@ -96,6 +102,7 @@ public class BTree extends BinaryTree {
 
         parent.keys[index] = child.keys[minDegree - 1];
         parent.keysStored += 1;
+        fixNode(child);
     }
 
     private void insertNonfull(Node current, int key) {
