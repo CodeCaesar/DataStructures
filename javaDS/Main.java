@@ -1,5 +1,6 @@
 package javaDS;
 
+import javaDS.Trees.BTree;
 import javaDS.Trees.BinarySearchTree;
 import javaDS.Trees.RedBlackTree;
 
@@ -28,7 +29,7 @@ public class Main {
 
         System.out.println(LinkedList);*/
 
-        RedBlackTree BST = new RedBlackTree();
+        /*RedBlackTree BST = new RedBlackTree();
 
         BST.insert(5, "h341f");
         BST.insert(2,"hello world");
@@ -49,7 +50,7 @@ public class Main {
         System.out.println(BST.search(7));
         System.out.println(BST.search(1));
 
-        System.out.println(BST);
+        System.out.println(BST);*/
 
         //BST.delete(7);
         /*BST.delete(5);
@@ -68,6 +69,29 @@ public class Main {
 
         System.out.println(BST);*/
 
-        System.out.println(BST.height());
+        //System.out.println(BST.height());
+
+        BTree BT = new BTree(2);
+
+        BT.insert(5);
+        BT.insert(7);
+        BT.insert(3);
+        BT.insert(12);
+        BT.insert(24);
+        BT.insert(6);
+        BT.insert(2);
+        BT.insert(1);
+        BT.insert(9);
+        BT.insert(11);
+        BT.insert(8);
+        BT.insert(4);
+        BT.insert(10);
+        BT.insert(23);
+        BT.insert(21);
+        BT.insert(15);
+        BT.insert(16);
+        BT.insert(17);
+
+        System.out.println(BT);
     }
 }

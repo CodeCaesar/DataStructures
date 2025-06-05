@@ -1,15 +1,16 @@
 package javaDS.Trees;
 
 public class BTree extends BinaryTree {
-    protected Node root;
-    protected int size;
+
     protected int minDegree;
     protected int maxDegree;
+    protected Node root;
+    protected int size;
 
     protected class Node {
         protected int keysStored;
-        protected int[] keys = new int[maxDegree - 1];
-        protected Node[] children = new Node[maxDegree];
+        protected int[] keys = new int[maxDegree];
+        protected Node[] children = new Node[maxDegree + 1];
         protected boolean leaf;
 
         protected Node(int[] keys) {
@@ -21,15 +22,29 @@ public class BTree extends BinaryTree {
             this.leaf = true;
         }
 
+        private String[] stringKeys(int[] keys) {
+            String[] keyArray = new String[maxDegree - 1];
+
+            for(int index = 0; index < maxDegree - 1; index++) {
+                keyArray[index] = "" + this.keys[index];
+            }
+
+            return keyArray;
+        }
+
         @Override
         public String toString() {
-            return "";
+            return "[Keys: " + String.join(",", stringKeys(keys)) + "]-> " + children.toString();
         }
     }
 
-    public BTree() {}
+    public BTree() {this.maxDegree = 2 * this.minDegree - 1;}
 
-    public BTree(int minDegree) {this.minDegree = minDegree; this.maxDegree = minDegree * 2 - 1;}
+    public BTree(int minDegree) {
+        this.minDegree = minDegree;
+        this.maxDegree = 2 * this.minDegree - 1;
+        this.root = new Node();
+    }
 
     private boolean has(Node current, int targetKey) {
         int index = 0;
@@ -76,7 +91,7 @@ public class BTree extends BinaryTree {
         parent.children[index + 1] = extraChild;
 
         for(int updateKeys = parent.keysStored - 1; updateKeys > index - 1; updateKeys--) {
-            parent.keys[updateKeys] = parent.keys[updateKeys + minDegree];
+            parent.keys[updateKeys + 1] = parent.keys[updateKeys];
         }
 
         parent.keys[index] = child.keys[minDegree - 1];
@@ -128,5 +143,10 @@ public class BTree extends BinaryTree {
         } else {
             insertNonfull(this.root, key);
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.root.toString();
     }
 }
