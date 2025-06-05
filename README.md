@@ -12,3 +12,4 @@ Data structures implemented in Java are:
 ### Python
 Data structures implemented in Python are:
 - Singly Linked List
+- Doubly Linked List
