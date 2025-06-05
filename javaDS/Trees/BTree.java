@@ -219,6 +219,11 @@ public class BTree extends BinaryTree {
     }
 
     @Override
+    public int height() {
+        return this.height;
+    }
+
+    @Override
     public String toString() {
         return this.root.toString();
     }
