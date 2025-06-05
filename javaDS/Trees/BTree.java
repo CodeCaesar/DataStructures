@@ -70,6 +70,10 @@ public class BTree extends BinaryTree {
         for(int index = this.maxDegree - 1; index >= brokenNode.keysStored; index--) {
             brokenNode.keys[index] = 0;
         }
+
+        for(int index = this.maxDegree; index > brokenNode.keysStored; index--) {
+            brokenNode.children[index] = null;
+        }
     }
 
     private void splitChild(Node parent, int index) {
