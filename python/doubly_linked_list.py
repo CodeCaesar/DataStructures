@@ -19,6 +19,30 @@ class DoublyLinkedList:
         self.tail = None
         self.size = 0
     
+    def __repr__(self):
+        """
+        Representation of DoublyLinkedList returns string of all nodes, but if the node is head or tail,
+        it will make it have Head or Tail at the end respectively.
+        
+        Running Time: O(1) + O(1) + O(n) + O(n) + O(n) + O(n) + O(n) + O(n) + O(n) + O(n) + O(n) = O(9n + 2) = <b>O(n)</b><p>
+        But every linked list has only one head and one tail, thus it appends head and tail only once.<p>
+        Running Time: O(1) + O(1) + O(n) + O(n) + O(1) + O(n) + O(1) + O(n) + O(n) + O(n) + O(n) = O(7n + 4) = <b>O(n)</b>
+        """
+        nodes = []
+        current = self.head
+
+        while current:
+            if current is self.head:
+                nodes.append(f"Head[Data: {current.data}]")
+            elif current is self.tail:
+                nodes.append(f"Tail[Data: {current.data}]")
+            else:
+                nodes.append(f"[Data: {current.data}]")
+            
+            current = current.next_node
+        
+        return f"Linked List: ({' <=> '.join(nodes)})"
+    
     def is_empty(self):
         """
         Checks if Linked List is empty.
@@ -81,3 +105,14 @@ class DoublyLinkedList:
         self.head = new_node
 
         self.size += 1
+
+list = DoublyLinkedList()
+list.append(5)
+list.append(6)
+list.append(2)
+list.append(9)
+list.append(4)
+list.append(3)
+list.prepend(7)
+
+print(list)
