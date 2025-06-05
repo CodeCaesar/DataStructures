@@ -93,5 +93,12 @@ public class Main {
         BT.insert(17);
 
         System.out.println(BT);
+
+        System.out.println("inorder:");
+        //BT.inorder();
+        System.out.println("preorder:");
+        BT.preorder();
+        System.out.println("postorder:");
+        //BT.postorder();
     }
 }

@@ -156,6 +156,35 @@ public class BTree extends BinaryTree {
         }
     }
 
+    private String[] stringKeys(Node node, int[] keys) {
+            String[] keyArray = new String[node.keysStored];
+
+            for(int index = 0; index < node.keysStored; index++) {
+                keyArray[index] = "" + node.keys[index];
+            }
+
+            return keyArray;
+        }
+
+    private void preorder(Node current) {
+        if(current != null) {
+            /*for(int index = 0; index < current.keysStored; index++) {
+                System.out.println(String.join(",", stringKeys(current, current.keys)));
+            }*/
+
+            System.out.println(String.join(",", stringKeys(current, current.keys)));
+
+            for(int index = 0; index < current.keysStored + 1; index++) {
+                preorder(current.children[index]);
+            }
+        }
+    }
+
+    @Override
+    public void preorder() {
+        preorder(this.root);
+    }
+
     @Override
     public String toString() {
         return this.root.toString();
