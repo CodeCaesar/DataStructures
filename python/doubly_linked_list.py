@@ -10,6 +10,7 @@ class _Node:
         return f"<-[Data: {self.data}]-> {self.next_node}"
 
 class DoublyLinkedList:
+    
     head: _Node
     tail: _Node
     size: int
