@@ -8,3 +8,13 @@ class _Node:
     
     def __repr__(self):
         return f"<-[Data: {self.data}]-> {self.next_node}"
+
+class DoublyLinkedList:
+    head: _Node
+    tail: _Node
+    size: int
+
+    def __init__(self):
+        self.head = None
+        self.tail = None
+        self.size = 0
