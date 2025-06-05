@@ -68,3 +68,16 @@ class DoublyLinkedList:
             self.tail = self.tail.next_node
         
         self.size += 1
+    
+    def prepend(self, value):
+        """
+        Prepend Node of given value; <i>i.e. inserts Node of given value at the start.</i>
+
+        Running Time: O(1) + O(1) + O(1) + O(1) + O(1) = O(5) = <b>O(1)</b>
+        """
+        new_node = _Node(value)
+        new_node.next_node = self.head
+        self.head.prev_node = new_node
+        self.head = new_node
+
+        self.size += 1
