@@ -1,3 +1,6 @@
+from linked_list import LinkedList
+
+
 class _Node:
     data: int
 
@@ -8,13 +11,14 @@ class _Node:
     def __repr__(self):
         return f"[Data: {self.data}]-> {self.next_node}"
 
-class SinglyLinkedList:
+class SinglyLinkedList(LinkedList):
 
     head: _Node
     tail: _Node
     size: int
 
     def __init__(self):
+        super().__init__()
         self.head = None
         self.tail = None
         self.size = 0
@@ -42,38 +46,6 @@ class SinglyLinkedList:
             current = current.next_node
         
         return f"Linked List: ({'-> '.join(nodes)})"
-    
-    def is_empty(self):
-        """
-        Checks if Linked List is empty.
-
-        Running Time: <b>O(1)</b>
-        """
-        return self.size == 0
-    
-    def get_size(self):
-        """
-        Returns current size of Linked List.
-        
-        Running Time: <b>O(1)</b>
-        """
-        return self.size
-    
-    def get_head(self):
-        """
-        Returns head Node's value of Linked List.
-        
-        Running Time: <b>O(1)</b>
-        """
-        return self.head.data
-    
-    def get_tail(self):
-        """
-        Returns tail Node's value of Linked List.
-
-        Running Time: <b>O(1)</b>
-        """
-        return self.tail.data
     
     def append(self, value):
         """
@@ -171,3 +143,8 @@ list.remove(4)
 list.remove(942)
 
 print(list)
+
+print(list.is_empty())
+print(list.get_size())
+print(list.get_head())
+print(list.get_tail())
