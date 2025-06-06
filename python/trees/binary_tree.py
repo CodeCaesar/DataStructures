@@ -1,20 +1,5 @@
-class _Node:
-    
-    key :int
-
-    def __init__(self, key, data):
-        self.key = key
-        self.data = data
-        self.parent = None
-        self.left = None
-        self.right = None
-
-    def __repr__(self):
-        return f"({self.left}) <-[{self.key}]-> ({self.right})"
-
 class BinaryTree:
     
-    root : _Node
     size : int
 
     def __init__(self):
@@ -73,21 +58,3 @@ class BinaryTree:
     
     def postorder(self):
         self.__postorder(self.root)
-
-
-BT = BinaryTree()
-BT.root = _Node(2, "")
-BT.root.left = _Node(5, "")
-BT.root.right = _Node(9, "")
-BT.root.left.left = _Node(142, "")
-BT.root.right.right = _Node(3, "")
-
-print(BT)
-print(BT.height())
-
-print("INORDER")
-BT.inorder()
-print("PREORDER")
-BT.preorder()
-print("POSTORDER")
-BT.postorder()
