@@ -22,14 +22,43 @@ class BinarySearchTree(BinaryTree):
 
     def __init__(self):
         super().__init__()
+    
+    def __insert(self, newNode):
+        parent = None
+        child = self.root
+
+        while(child):
+            parent = child
+
+            if newNode.key < child.key:
+                child = child.left
+            else:
+                child = child.right
+
+        newNode.parent = parent
+
+        if not parent:
+            self.root = newNode
+        elif newNode.key < parent.key:
+            parent.left = newNode
+        else:
+            parent.right = newNode
+
+    def insert(self, key, data):
+        newNode = _Node(key, data)
+
+        self.__insert(newNode)
+        self.size += 1
 
 
 BST = BinarySearchTree()
-BST.root = _Node(2, "")
-BST.root.left = _Node(5, "")
-BST.root.right = _Node(9, "")
-BST.root.left.left = _Node(142, "")
-BST.root.right.right = _Node(3, "")
+BST.insert(4, "first root")
+BST.insert(2, "II")
+BST.insert(7, "lucky")
+BST.insert(3, "Python")
+BST.insert(5, "V")
+BST.insert(10, "X")
+BST.insert(9, "3*3")
 
 print(BST)
 print(BST.height())
