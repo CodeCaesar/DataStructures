@@ -36,16 +36,16 @@ class BinaryTree:
         else:
             return height2    
 
-    def height(self, current):
+    def __height(self, current):
         if not current:
             return 0
         elif not current.left and not current.right:
             return 0
 
-        return self.max_height(self.height(current.left), self.height(current.right)) + 1
+        return self.max_height(self.__height(current.left), self.__height(current.right)) + 1
 
     def height(self):
-        return self.height(self.root)
+        return self.__height(self.root)
 
     def __inorder(self, current):
         if current:
@@ -83,6 +83,7 @@ BT.root.left.left = _Node(142, "")
 BT.root.right.right = _Node(3, "")
 
 print(BT)
+print(BT.height())
 
 print("INORDER")
 BT.inorder()
