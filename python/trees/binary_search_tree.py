@@ -3,7 +3,7 @@ from binary_tree import BinaryTree
 
 class _Node:
     
-    key :int
+    key : int
 
     def __init__(self, key, data):
         self.key = key
@@ -16,6 +16,9 @@ class _Node:
         return f"({self.left}) <-[{self.key}]-> ({self.right})"
 
 class BinarySearchTree(BinaryTree):
+
+    size : int
+    root : _Node
 
     def __init__(self):
         super().__init__()
