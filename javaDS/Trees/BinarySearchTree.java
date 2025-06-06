@@ -60,7 +60,11 @@ public class BinarySearchTree extends BinaryTree {
             }
         }
 
-        return current;
+        if(current.key == key) {
+            return current;
+        } else {
+            return null;
+        }
     }
 
     public int min() {
@@ -147,6 +151,10 @@ public class BinarySearchTree extends BinaryTree {
 
     public void delete(int key) {
         Node deleteNode = getNode(key);
+
+        if(deleteNode == null) {
+            return;
+        }
 
         if(deleteNode.left == null) {
             transplant(deleteNode, deleteNode.right);
