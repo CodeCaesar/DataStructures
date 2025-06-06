@@ -16,3 +16,5 @@ Data structures implemented in Python are:
 - Linked Lists:
   - Singly Linked List
   - Doubly Linked List
+- Trees
+  - Binary Search Tree
