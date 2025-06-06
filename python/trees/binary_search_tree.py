@@ -23,31 +23,31 @@ class BinarySearchTree(BinaryTree):
     def __init__(self):
         super().__init__()
     
-    def __insert(self, newNode):
+    def __insert(self, new_node):
         parent = None
         child = self.root
 
         while(child):
             parent = child
 
-            if newNode.key < child.key:
+            if new_node.key < child.key:
                 child = child.left
             else:
                 child = child.right
 
-        newNode.parent = parent
+        new_node.parent = parent
 
         if not parent:
-            self.root = newNode
-        elif newNode.key < parent.key:
-            parent.left = newNode
+            self.root = new_node
+        elif new_node.key < parent.key:
+            parent.left = new_node
         else:
-            parent.right = newNode
+            parent.right = new_node
 
     def insert(self, key, data):
-        newNode = _Node(key, data)
+        new_node = _Node(key, data)
 
-        self.__insert(newNode)
+        self.__insert(new_node)
         self.size += 1
     
     def __getNode(self, key):
