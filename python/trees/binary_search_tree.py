@@ -36,7 +36,7 @@ class BinarySearchTree(BinaryTree):
     def search(self, target:int):
         return self.__search(target, self.root)
 
-    def iterative_search(self, target):
+    def iterative_search(self, target:int):
         current = self.root
 
         while(current and target != current.key):
@@ -69,7 +69,7 @@ class BinarySearchTree(BinaryTree):
 
         return current.key
     
-    def __insert(self, new_node):
+    def __insert(self, new_node:_Node):
         parent = None
         child = self.root
 
@@ -90,13 +90,13 @@ class BinarySearchTree(BinaryTree):
         else:
             parent.right = new_node
 
-    def insert(self, key, data):
+    def insert(self, key:int, data):
         new_node = _Node(key, data)
 
         self.__insert(new_node)
         self.size += 1
     
-    def __get_node(self, key):
+    def __get_node(self, key:int):
         current = self.root
 
         while current and key != current.key:
@@ -110,13 +110,13 @@ class BinarySearchTree(BinaryTree):
         else:
             return None
     
-    def __min(self, current):
+    def __min(self, current:_Node):
         while current.left:
             current = current.left
 
         return current
     
-    def __transplant(self, removed_node, transplanted_node):
+    def __transplant(self, removed_node:_Node, transplanted_node:_Node):
         if not removed_node.parent:
             self.root = transplanted_node
         elif removed_node == removed_node.parent.left:
@@ -127,7 +127,7 @@ class BinarySearchTree(BinaryTree):
         if transplanted_node:
             transplanted_node.parent = removed_node.parent
 
-    def delete(self, key):
+    def delete(self, key:int):
         delete_node = self.__get_node(key)
 
         if not delete_node:
