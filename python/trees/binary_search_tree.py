@@ -23,7 +23,7 @@ class BinarySearchTree(BinaryTree):
     def __init__(self):
         super().__init__()
     
-    def __search(self, target, current):
+    def __search(self, target:int, current:_Node):
         if not current:
             return None
         elif current.key == target:
@@ -33,7 +33,7 @@ class BinarySearchTree(BinaryTree):
         else:
             return self.__search(target, current.right)
 
-    def search(self, target):
+    def search(self, target:int):
         return self.__search(target, self.root)
 
     def iterative_search(self, target):
