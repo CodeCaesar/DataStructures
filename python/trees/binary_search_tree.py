@@ -22,6 +22,19 @@ class BinarySearchTree(BinaryTree):
 
     def __init__(self):
         super().__init__()
+    
+    def __search(self, target, current):
+        if not current:
+            return None
+        elif current.key == target:
+            return current.data
+        elif target < current.key:
+            return self.__search(target, current.left)
+        else:
+            return self.__search(target, current.right)
+
+    def search(self, target):
+        return self.__search(target, self.root)
 
     def iterative_search(self, target):
         current = self.root
