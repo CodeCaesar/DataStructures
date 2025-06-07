@@ -22,6 +22,17 @@ class BinarySearchTree(BinaryTree):
 
     def __init__(self):
         super().__init__()
+
+    def iterative_search(self, target):
+        current = self.root
+
+        while(current and target != current.key):
+            if target < current.key:
+                current = current.left
+            else:
+                current = current.right
+
+        return current.data
     
     def __insert(self, new_node):
         parent = None
@@ -50,7 +61,7 @@ class BinarySearchTree(BinaryTree):
         self.__insert(new_node)
         self.size += 1
     
-    def __getNode(self, key):
+    def __get_node(self, key):
         current = self.root
 
         while current and key != current.key:
@@ -82,7 +93,7 @@ class BinarySearchTree(BinaryTree):
             transplanted_node.parent = removed_node.parent
 
     def delete(self, key):
-        delete_node = self.__getNode(key)
+        delete_node = self.__get_node(key)
 
         if not delete_node:
             return
