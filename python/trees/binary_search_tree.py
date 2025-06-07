@@ -33,6 +33,17 @@ class BinarySearchTree(BinaryTree):
                 current = current.right
 
         return current.data
+
+    def min(self):
+        current = self.root
+
+        if not current:
+            return 0
+
+        while(current.left):
+            current = current.left
+        
+        return current.key
     
     def __insert(self, new_node):
         parent = None
