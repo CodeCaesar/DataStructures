@@ -1,11 +1,13 @@
 from binary_tree import BinaryTree
+from colours import Colours
 
 
 class _Node:
     
     key : int
+    colour : Colours
 
-    def __init__(self, key, data, colour="Red"):
+    def __init__(self, key, data, colour=Colours.RED):
         self.key = key
         self.data = data
         self.parent = None
@@ -14,7 +16,7 @@ class _Node:
         self.colour = colour
 
     def __repr__(self):
-        return f"({self.left}) <-[{self.key}:{self.colour}]-> ({self.right})"
+        return f"({self.left}) <-[{self.key}:{self.colour.value}]-> ({self.right})"
 
 class RedBlackTree(BinaryTree):
 
