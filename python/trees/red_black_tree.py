@@ -10,9 +10,9 @@ class _Node:
     def __init__(self, key, data, colour=Colours.RED):
         self.key = key
         self.data = data
-        self.parent = None
-        self.left = None
-        self.right = None
+        self.parent = RedBlackTree.nil
+        self.left = RedBlackTree.nil
+        self.right = RedBlackTree.nil
         self.colour = colour
 
     def __repr__(self):
@@ -22,6 +22,7 @@ class RedBlackTree(BinaryTree):
 
     size : int
     root : _Node
+    nil = _Node(0, None, Colours.BLACK)
 
     def __init__(self):
         super().__init__()
