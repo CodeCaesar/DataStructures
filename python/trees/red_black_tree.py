@@ -101,7 +101,7 @@ class RedBlackTree(BinaryTree):
             new_node.parent.parent.colour = Colours.RED
             self.__leftRotate(new_node.parent.parent)
 
-    def fixup(self, new_node:_Node):
+    def __fixup(self, new_node:_Node):
         while(new_node.parent.colour == Colours.RED):
             if new_node.parent == new_node.parent.parent.left:
                 self.__fixup_case_a(new_node)
