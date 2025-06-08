@@ -109,3 +109,32 @@ class RedBlackTree(BinaryTree):
                 self.__fixup_case_b(new_node)
 
         self.root.colour = Colours.BLACK
+    
+    def __insert(self, new_node:_Node):
+        parent = self.nil
+        child = self.root
+
+        while(child != self.nil):
+            parent = child
+
+            if new_node.key < child.key:
+                child = child.left
+            else:
+                child = child.right
+
+        new_node.parent = parent
+
+        if parent == self.nil:
+            self.root = new_node
+        elif new_node.key < parent.key:
+            parent.left = new_node
+        else:
+            parent.right = new_node
+
+        self.__fixup(new_node)
+
+    def insert(self, key:int, data):
+        new_node = _Node(key, data)
+
+        self.__insert(new_node)
+        self.size += 1
