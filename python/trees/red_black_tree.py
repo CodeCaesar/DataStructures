@@ -1,3 +1,6 @@
+from binary_tree import BinaryTree
+
+
 class _Node:
     
     key : int
