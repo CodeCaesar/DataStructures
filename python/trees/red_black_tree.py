@@ -10,10 +10,10 @@ class _Node:
     def __init__(self, key, data, colour=Colours.RED):
         self.key = key
         self.data = data
+        self.colour = colour
         self.parent = RedBlackTree.nil
         self.left = RedBlackTree.nil
         self.right = RedBlackTree.nil
-        self.colour = colour
 
     def __repr__(self):
         return f"({self.left}) <-[{self.key}:{self.colour.value}]-> ({self.right})"
@@ -64,3 +64,48 @@ class RedBlackTree(BinaryTree):
 
         new_parent.right = new_left_child
         new_left_child.parent = new_parent
+
+    def __fixup_case_a(self, new_node:_Node):
+        uncle = new_node.parent.parent.right
+
+        if uncle.colour == Colours.RED: # CASE 1
+            new_node.parent.colour = Colours.BLACK
+            uncle.colour = Colours.BLACK
+            new_node.parent.parent.colour = Colours.RED
+            new_node = new_node.parent.parent
+        else:
+            if new_node == new_node.parent.right: # CASE 2
+                new_node = new_node.parent
+                self.__leftRotate(new_node)
+
+            # CASE 2 & 3
+            new_node.parent.colour = Colours.BLACK
+            new_node.parent.parent.colour = Colours.RED
+            self.__rightRotate(new_node.parent.parent)
+
+    def __fixup_case_b(self, new_node:_Node):
+        uncle = new_node.parent.parent.left
+
+        if uncle.colour == Colours.RED: # CASE 1
+            new_node.parent.colour = Colours.BLACK
+            uncle.colour = Colours.BLACK
+            new_node.parent.parent.colour = Colours.RED
+            new_node = new_node.parent.parent
+        else:
+            if new_node == new_node.parent.left: # CASE 2
+                new_node = new_node.parent
+                self.__rightRotate(new_node)
+
+            # CASE 2 & 3
+            new_node.parent.colour = Colours.BLACK
+            new_node.parent.parent.colour = Colours.RED
+            self.__leftRotate(new_node.parent.parent)
+
+    def fixup(self, new_node:_Node):
+        while(new_node.parent.colour == Colours.RED):
+            if new_node.parent == new_node.parent.parent.left:
+                self.__fixup_case_a(new_node)
+            else:
+                self.__fixup_case_b(new_node)
+
+        self.root.colour = Colours.BLACK
