@@ -16,7 +16,17 @@ class _Node:
         self.right = None
 
     def __repr__(self):
-        return f"({self.left}) <-[{self.key}:{self.colour.value}]-> ({self.right})"
+        if self.left.key == 0 and self.left.data == None and self.left.colour == Colours.BLACK:
+            leftString = "Nil"
+        else:
+            leftString = self.left
+
+        if self.right.key == 0 and self.right.data == None and self.right.colour == Colours.BLACK:
+            rightString = "Nil"
+        else:
+            rightString = self.right
+
+        return f"({leftString}) <-[{self.key}:{self.colour.value}]-> ({rightString})"
 
 class RedBlackTree(BinaryTree):
 
