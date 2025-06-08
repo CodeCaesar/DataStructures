@@ -11,9 +11,9 @@ class _Node:
         self.key = key
         self.data = data
         self.colour = colour
-        self.parent = RedBlackTree.nil
-        self.left = RedBlackTree.nil
-        self.right = RedBlackTree.nil
+        self.parent = None
+        self.left = None
+        self.right = None
 
     def __repr__(self):
         return f"({self.left}) <-[{self.key}:{self.colour.value}]-> ({self.right})"
@@ -26,6 +26,7 @@ class RedBlackTree(BinaryTree):
 
     def __init__(self):
         super().__init__()
+        self.root = self.nil
     
     def __leftRotate(self, new_right_child:_Node):
         new_parent = new_right_child.right
@@ -135,6 +136,21 @@ class RedBlackTree(BinaryTree):
 
     def insert(self, key:int, data):
         new_node = _Node(key, data)
+        new_node.parent = self.nil
+        new_node.left = self.nil
+        new_node.right = self.nil
 
         self.__insert(new_node)
         self.size += 1
+
+
+RBT = RedBlackTree()
+RBT.insert(4, "first root")
+RBT.insert(2, "II")
+RBT.insert(7, "lucky")
+RBT.insert(3, "Python")
+RBT.insert(5, "V")
+RBT.insert(10, "X")
+RBT.insert(9, "3*3")
+
+print(RBT)
