@@ -19,7 +19,6 @@ public class DoublyLinkedList extends LinkedList {
 
     private Node head;
     private Node tail;
-    private int size;
 
     public DoublyLinkedList() {
     }

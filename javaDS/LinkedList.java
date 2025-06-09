@@ -12,7 +12,7 @@ public abstract class LinkedList {
 
         @Override
         public String toString() {
-            return "<-[" + this.data + "]-> " + this.nextNode.toString();
+            return "[" + this.data + "]-> " + this.nextNode.toString();
         }
     }
 

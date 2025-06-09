@@ -6,8 +6,8 @@ import javaDS.Trees.RedBlackTree;
 
 public class Main {
     public static void main(String[] args) {
-        //SinglyLinkedList LinkedList = new SinglyLinkedList();
-        DoublyLinkedList LinkedList = new DoublyLinkedList();
+        SinglyLinkedList LinkedList = new SinglyLinkedList();
+        //DoublyLinkedList LinkedList = new DoublyLinkedList();
 
         LinkedList.append(5);
         LinkedList.append(3);
