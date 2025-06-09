@@ -62,7 +62,7 @@ public class SinglyLinkedList {
     /**
      * Appends Node of given value; <i>i.e. inserts Node of given value at the end.</i>
      * <p>
-     * Running Time: O(1) + O(1) + O(1) + O(1) + O(1) + O(1) + O(1) + O(1) = O(9) = <b>O(1)</b>
+     * Running Time: O(1) + O(1) + O(1) + O(1) + O(1) + O(1) + O(1) + O(1) = O(8) = <b>O(1)</b>
      */
     public void append(int value) {
         Node newNode = new Node(value);
