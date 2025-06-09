@@ -93,4 +93,69 @@ public class DoublyLinkedList {
 
         this.size += 1;
     }
+
+    /**
+     * Checks if Linked List's head has given value. If yes then make head and tail null and reduce size by one.
+     * Else print error that Noce of given value wasn't found.
+     * <p>
+     * Running Time: O(1) + O(1) + O(1) + O(1) + O(1) + O(1) = O(6) = <b>O(1)</b>
+     */
+    private void removeSolo(int value) {
+        if(this.head.data == value) {
+            this.head = null;
+            this.tail = null;
+            this.size -= 1;
+        } else {
+            System.err.println("Node with value: '" + value + "' not found");
+        }
+    }
+
+    /**
+     * Removes first Node of given value. If size is zero print error message, if size is one then call removeSolo().
+     * If Node with given value is found then make current Node point to its grandchild.
+     * 
+     * <h3>Running Time:</h3>
+     * Best Case: O(1) + O(1) + O(1) = O(3) = <b>O(1)</b> <p>
+     * {@code Element-Found} Case: O(1) + O(1) + O(1) + O(1) + O(6) + O(1) + O(1) + O(1) + O(1) + O(1) + O(1) + O(1) + O(n) + O(n) + O(1) + O(1) + O(1) + O(1) + O(1) + O(n) 
+     * = O(3n + 22) = <b>O(n)</b> <p>
+     * {@code Element-Not-Found} Case: O(1) + O(1) + O(1) + O(1) + O(6) + O(1) + O(1) + O(1) + O(n) + O(n) + O(n) + O(1) 
+     * = O(3n + 14) = <b>O(n)</b><p>
+     */
+    public void remove(int value) {
+        if(this.size == 0) {
+            System.err.println("Linked List is empty");
+            return;
+        }
+
+        if(this.size == 1) {
+            removeSolo(value);
+            return;
+        }
+        
+        Node current = this.head;
+
+        if(current.data == value) {
+            this.head = this.head.nextNode;
+            this.head.prevNode = null;
+            this.size -= 1;
+            return;
+        }
+
+        while(current.nextNode != null) {
+            if(current.nextNode.data == value) {
+                current.nextNode = current.nextNode.nextNode;
+
+                if(current.nextNode != null) {
+                    current.nextNode.prevNode = current;
+                }
+
+                this.size -= 1;
+                return;
+            }
+
+            current = current.nextNode;
+        }
+        
+        System.err.println("Node with value: '" + value + "' not found");
+    }
 }
