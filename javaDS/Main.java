@@ -29,7 +29,7 @@ public class Main {
 
         System.out.println(LinkedList);*/
 
-        /*RedBlackTree BST = new RedBlackTree();
+        RedBlackTree BST = new RedBlackTree();
 
         BST.insert(5, "h341f");
         BST.insert(2,"hello world");
@@ -50,7 +50,8 @@ public class Main {
         System.out.println(BST.search(7));
         System.out.println(BST.search(1));
 
-        System.out.println(BST);*/
+        System.out.println(BST);
+        System.out.println(BST.valid());
 
         //BST.delete(7);
         /*BST.delete(5);
@@ -71,7 +72,7 @@ public class Main {
 
         //System.out.println(BST.height());
 
-        BTree BT = new BTree(2);
+        /*BTree BT = new BTree(2);
 
         BT.insert(5);
         BT.insert(7);
@@ -99,6 +100,6 @@ public class Main {
         System.out.println("preorder:");
         BT.preorder();
         System.out.println("postorder:");
-        BT.postorder();
+        BT.postorder();*/
     }
 }

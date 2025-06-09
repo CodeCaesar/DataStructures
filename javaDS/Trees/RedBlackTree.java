@@ -178,8 +178,121 @@ public class RedBlackTree extends BinarySearchTree {
         this.size += 1;
     }
 
+    private boolean validRedParent(Node parent) {
+        if(parent == this.nil) {
+            return true;
+        } else if(parent.colour == Colours.BLACK) {
+            return validRedParent(parent.left) && validRedParent(parent.right);
+        } else if(parent.left.colour == Colours.BLACK && parent.right.colour == Colours.BLACK) {
+            return true && validRedParent(parent.left) && validRedParent(parent.right);
+        } else {
+            return false;
+        }
+    }
+
+    private int compareBlackDepth(Node current) {
+        int isBlack;
+        
+        if(current.colour == Colours.BLACK) {
+            isBlack = 1;
+        } else {
+            isBlack = 0;
+        }
+
+        if(current == this.nil) {
+            return 0;
+        } else if(current.left == this.nil && current.right == this.nil) {
+            return isBlack;
+        }
+        
+        int leftDepth = compareBlackDepth(current.left);
+
+        if(leftDepth == compareBlackDepth(current.right)) {
+            return isBlack + leftDepth;
+        } else {
+            return -1;
+        }
+    }
+
+    private boolean validBlackDepth(Node current) {
+        if(current.left == this.nil && current.right == this.nil) {
+            return true;
+        } else if(compareBlackDepth(current) == -1) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    /**
+     * Checks if Red-Black Tree is valid by checking following properties
+     * <li>1. Every node is either red or black</li>
+     * <li>2. Root is black</li>
+     * <li>3. Every leaf node is black</li>
+     * <li>4. If node is red then both its children are black</li>
+     * <li>5. Every path must have same black depth</li>
+     * 
+     * Colours.java guarantees 1st property; nil field guarantees 3rd property. Thus this method only has to check 2nd, 4th and 5th property.
+     */
+    public boolean valid() {
+        if(this.root.colour == Colours.RED) {
+            return false;
+        } else if(!validRedParent(this.root)) {
+            return false;
+        } else if(!validBlackDepth(this.root)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     @Override
     public String toString() {
         return this.root.toString();
+    }
+
+    /**
+     * Any methods below are only for testing purposes
+     */
+
+    public void setRoot(Node rootNode) {
+        this.root = rootNode;
+    }
+    
+    public void setLeft(Node parent, Node leftNode) {
+            parent.left = leftNode;
+            leftNode.parent = parent;
+        }
+
+    public void setRight(Node parent, Node rightNode) {
+        parent.right = rightNode;
+        rightNode.parent = parent;
+    }
+
+    public static void main(String[] args) {
+        RedBlackTree RBT = new RedBlackTree();
+
+        Node rottNode = RBT.new Node(0, "", Colours.RED);
+        RBT.setRoot(rottNode);
+
+        System.out.println(RBT.valid());
+
+        rottNode = RBT.new Node(4, "", Colours.BLACK);
+        RBT.setRoot(rottNode);
+        Node leftNode = RBT.new Node(6, "", Colours.RED);
+        Node childNode = RBT.new Node(5, "", Colours.RED);
+        RBT.setLeft(RBT.root, leftNode);
+        RBT.setRight(leftNode, childNode);
+
+        System.out.println(RBT.valid());
+
+        rottNode = RBT.new Node(4, "", Colours.BLACK);
+        RBT.setRoot(rottNode);
+        leftNode = RBT.new Node(6, "", Colours.BLACK);
+        Node rightNode = RBT.new Node(2, "", Colours.RED);
+        RBT.setLeft(RBT.root, leftNode);
+        RBT.setRight(RBT.root, rightNode);
+
+        System.out.println(RBT.valid());
     }
 }
