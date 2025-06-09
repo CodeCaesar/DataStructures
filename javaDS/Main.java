@@ -6,7 +6,8 @@ import javaDS.Trees.RedBlackTree;
 
 public class Main {
     public static void main(String[] args) {
-        /*SinglyLinkedList LinkedList = new SinglyLinkedList();
+        //SinglyLinkedList LinkedList = new SinglyLinkedList();
+        DoublyLinkedList LinkedList = new DoublyLinkedList();
 
         LinkedList.append(5);
         LinkedList.append(3);
@@ -27,9 +28,9 @@ public class Main {
         LinkedList.remove(6);
         LinkedList.remove(6);
 
-        System.out.println(LinkedList);*/
+        System.out.println(LinkedList);
 
-        RedBlackTree BST = new RedBlackTree();
+        /*RedBlackTree BST = new RedBlackTree();
 
         BST.insert(5, "h341f");
         BST.insert(2,"hello world");
@@ -51,7 +52,7 @@ public class Main {
         System.out.println(BST.search(1));
 
         System.out.println(BST);
-        System.out.println(BST.valid());
+        System.out.println(BST.valid());*/
 
         //BST.delete(7);
         /*BST.delete(5);

@@ -158,4 +158,33 @@ public class DoublyLinkedList {
         
         System.err.println("Node with value: '" + value + "' not found");
     }
+
+    /**
+     * String representation of DoublyLinkedList returns string of all nodes, but if the node is head or tail,
+     * it will make it have Head or Tail at the end respectively.
+     * <p>
+     * Running Time: O(1) + O(1) + O(n) + O(n) + O(n) + O(n) + O(n) + O(n) + O(n) + O(n) + O(n) = O(9n + 2) = <b>O(n)<p></b>
+     * <i>But every linked list has only one head and one tail, thus it appends head and tail only once.</i><p>
+     * Running Time: O(1) + O(1) + O(n) + O(n) + O(1) + O(n) + O(1) + O(n) + O(n) + O(n) + O(n) = O(7n + 4) = <b>O(n)<p></b>
+     */
+    @Override
+    public String toString() {
+        Node current = this.head;
+        String[] nodes = new String[this.size];
+
+        for(int index = 0; index < this.size; index++) {
+            if(current == this.head) {
+                nodes[0] = "Head[Data: " + current.data + "]";
+            } else if(current == this.tail) {
+                nodes[index] = "Tail[Data: " + current.data + "]";
+            }
+            else {
+                nodes[index] = "[Data: " + current.data + "]";
+            }
+
+            current = current.nextNode;
+        }
+
+        return "Linked List: (" + String.join(" <=> ", nodes) + ")";
+    }
 }
