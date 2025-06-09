@@ -6,6 +6,7 @@
 Data structures implemented in Java are:
 - Linked Lists:
   - Singly Linked List
+  - Doubly Linked List
 - Trees
   - Binary Search Tree
   - Red-Black Tree
@@ -18,3 +19,4 @@ Data structures implemented in Python are:
   - Doubly Linked List
 - Trees
   - Binary Search Tree
+  - Red-Black Tree
