@@ -19,7 +19,7 @@ class BinaryTree:
         if height1 >= height2:
             return height1
         else:
-            return height2    
+            return height2
 
     def __height(self, current):
         if not current:
