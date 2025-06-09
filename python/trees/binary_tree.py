@@ -15,7 +15,7 @@ class BinaryTree:
     def get_root(self):
         return self.root.key
     
-    def __max_height(self, height1, height2):
+    def __max_height(self, height1:int, height2:int):
         if height1 >= height2:
             return height1
         else:
