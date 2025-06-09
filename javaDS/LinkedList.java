@@ -5,7 +5,6 @@ public abstract class LinkedList {
     protected class Node {
         protected int data;
         protected Node nextNode = null;
-        protected Node prevNode = null;
 
         protected Node(int data) {
             this.data = data;
