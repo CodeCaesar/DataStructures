@@ -152,6 +152,62 @@ class RedBlackTree(BinaryTree):
 
         self.__insert(new_node)
         self.size += 1
+    
+    def __valid_red_parent(self, parent:_Node):
+        if parent == self.nil:
+            return True
+        elif parent.colour == Colours.BLACK:
+            return self.__valid_red_parent(parent.left) and self.__valid_red_parent(parent.right)
+        elif parent.left.colour == Colours.BLACK and parent.right.colour == Colours.BLACK:
+            return True and self.__valid_red_parent(parent.left) and self.__valid_red_parent(parent.right)
+        else:
+            return False
+
+    def __compare_black_depth(self, current:_Node):        
+        if current.colour == Colours.BLACK:
+            is_black = 1
+        else:
+            is_black = 0
+
+        if current == self.nil:
+            return 0
+        elif current.left == self.nil and current.right == self.nil:
+            return is_black
+        
+        left_depth = self.__compare_black_depth(current.left)
+
+        if left_depth == self.__compare_black_depth(current.right):
+            return is_black + left_depth
+        else:
+            return -1
+
+    def __valid_black_depth(self, current:_Node):
+        if current.left == self.nil and current.right == self.nil:
+            return True
+        elif self.__compare_black_depth(current) == -1:
+            return False
+        else:
+            return True
+
+    def valid(self):
+        """
+        Checks if Red-Black Tree is valid by checking following properties
+        <li>1. Every node is either red or black</li>
+        <li>2. Root is black</li>
+        <li>3. Every leaf node is black</li>
+        <li>4. If node is red then both its children are black</li>
+        <li>5. Every path must have same black depth</li>
+
+        Colours.java guarantees 1st property; nil field guarantees 3rd property. Thus this method only has to check 2nd, 4th and 5th property.
+        """
+        if self.root.colour == Colours.RED:
+            return False
+        elif not self.__valid_red_parent(self.root):
+            return False
+        elif not self.__valid_black_depth(self.root):
+            return False
+        else:
+            return True
 
 
 RBT = RedBlackTree()
@@ -164,3 +220,4 @@ RBT.insert(10, "X")
 RBT.insert(9, "3*3")
 
 print(RBT)
+print(RBT.valid())
