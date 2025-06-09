@@ -2,17 +2,17 @@ package javaDS.Trees;
 
 public class RedBlackTree extends BinarySearchTree {
 
-    protected final Node nil = new Node(0, null, Colours.BLACK);
-    protected Node root;
+    private final Node nil = new Node(0, null, Colours.BLACK);
+    private Node root;
     protected int size;
 
-    protected class Node<Data> extends BinaryTree.Node {
-        protected Node parent = nil;
-        protected Node left = nil;
-        protected Node right = nil;
+    private class Node<Data> extends BinaryTree.Node {
+        private Node parent = nil;
+        private Node left = nil;
+        private Node right = nil;
         private Colours colour;
 
-        protected Node(int key, Data data) {
+        private Node(int key, Data data) {
             super(key, data);
             this.colour = Colours.RED;
         }
@@ -45,7 +45,7 @@ public class RedBlackTree extends BinarySearchTree {
 
     public RedBlackTree() {this.root = this.nil;}
 
-    private void leftRotate(Node newRightChild) {
+    protected void leftRotate(Node newRightChild) {
         Node newParent = newRightChild.right;
         newRightChild.right = newParent.left;
 
@@ -67,7 +67,7 @@ public class RedBlackTree extends BinarySearchTree {
         newRightChild.parent = newParent;
     }
 
-    private void rightRotate(Node newLeftChild) {
+    protected void rightRotate(Node newLeftChild) {
         Node newParent = newLeftChild.left;
         newLeftChild.left = newParent.right;
 
