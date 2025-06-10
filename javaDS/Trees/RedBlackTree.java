@@ -48,7 +48,7 @@ public class RedBlackTree extends BinarySearchTree {
     private Node getNode(int key) {
         Node current = this.root;
 
-        while(current != null && key != current.key) {
+        while(current != this.nil && key != current.key) {
             if(key < current.key) {
                 current = current.left;
             } else {
@@ -59,7 +59,7 @@ public class RedBlackTree extends BinarySearchTree {
         if(current.key == key) {
             return current;
         } else {
-            return null;
+            return this.nil;
         }
     }
 
@@ -202,6 +202,20 @@ public class RedBlackTree extends BinarySearchTree {
         }
 
         return current;
+    }
+
+    private void transplant(Node removedNode, Node transplantedNode) {
+        if(removedNode.parent == this.nil) {
+            this.root = transplantedNode;
+        } else if(removedNode == removedNode.parent.left) {
+            removedNode.parent.left = transplantedNode;
+        } else {
+            removedNode.parent.right = transplantedNode;
+        }
+
+        if(transplantedNode != this.nil) {
+            transplantedNode.parent = removedNode.parent;
+        }
     }
 
     private boolean validRedParent(Node parent) {
