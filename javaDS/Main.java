@@ -6,8 +6,8 @@ import javaDS.Trees.RedBlackTree;
 
 public class Main {
     public static void main(String[] args) {
-        SinglyLinkedList LinkedList = new SinglyLinkedList();
-        //DoublyLinkedList LinkedList = new DoublyLinkedList();
+        //SinglyLinkedList LinkedList = new SinglyLinkedList();
+        /*DoublyLinkedList LinkedList = new DoublyLinkedList();
 
         LinkedList.append(5);
         LinkedList.append(3);
@@ -28,7 +28,7 @@ public class Main {
         LinkedList.remove(6);
         LinkedList.remove(6);
 
-        System.out.println(LinkedList);
+        System.out.println(LinkedList);*/
 
         /*RedBlackTree BST = new RedBlackTree();
 
@@ -102,5 +102,28 @@ public class Main {
         BT.preorder();
         System.out.println("postorder:");
         BT.postorder();*/
+
+        RedBlackTree RBT = new RedBlackTree();
+
+        RBT.insert(12, "");
+        RBT.insert(7, "");
+        RBT.insert(3, "");
+        RBT.insert(15, "");
+        RBT.insert(4, "");
+        RBT.insert(6, "");
+        RBT.insert(14, "");
+        RBT.insert(5, "");
+
+        System.out.println("inorder:");
+        RBT.inorder();
+        System.out.println("preorder:");
+        RBT.preorder();
+        System.out.println("postorder:");
+        RBT.postorder();
+
+        System.out.println("Max: " + RBT.max() + ", Min: " + RBT.min());
+
+        System.out.println(RBT);
+        System.out.println(RBT.valid());
     }
 }

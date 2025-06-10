@@ -45,6 +45,24 @@ public class RedBlackTree extends BinarySearchTree {
 
     public RedBlackTree() {this.root = this.nil;}
 
+    private Node getNode(int key) {
+        Node current = this.root;
+
+        while(current != null && key != current.key) {
+            if(key < current.key) {
+                current = current.left;
+            } else {
+                current = current.right;
+            }
+        }
+
+        if(current.key == key) {
+            return current;
+        } else {
+            return null;
+        }
+    }
+
     protected void leftRotate(Node newRightChild) {
         Node newParent = newRightChild.right;
         newRightChild.right = newParent.left;
@@ -176,6 +194,14 @@ public class RedBlackTree extends BinarySearchTree {
 
         insert(newNode);
         this.size += 1;
+    }
+
+    private Node successor(Node current) {
+        while(current.left != this.nil) {
+            current = current.left;
+        }
+
+        return current;
     }
 
     private boolean validRedParent(Node parent) {
