@@ -218,6 +218,51 @@ public class RedBlackTree extends BinarySearchTree {
         }
     }
 
+    private void fixDoubleBlack(Node current) {}
+
+    @Override
+    public void delete(int key) {
+        Node deleteNode = getNode(key);
+
+        if(deleteNode == this.nil) {
+            return;
+        }
+
+        Node successorNode;
+
+        if(deleteNode.left != this.nil && deleteNode.right != this.nil) {
+            successorNode = successor(deleteNode.right);
+        } else if(deleteNode.left == this.nil && deleteNode.right == this.nil) {
+            successorNode = this.nil;
+        } else if(deleteNode.left != this.nil) {
+            successorNode = deleteNode.left;
+        } else {
+            successorNode = deleteNode.right;
+        }
+
+        Boolean doubleBlack = (deleteNode.colour == Colours.BLACK) && (successorNode.colour == Colours.BLACK);
+
+        if(deleteNode.left == this.nil) {
+            transplant(deleteNode, deleteNode.right);
+
+            if(doubleBlack) {
+                fixDoubleBlack(successorNode);
+            }
+        } else if(deleteNode.right == this.nil) {
+            transplant(deleteNode, deleteNode.left);
+
+            if(doubleBlack) {
+                fixDoubleBlack(successorNode);
+            }
+        }
+
+        // TO BE CONT.
+
+        //transplant(deleteNode, successorNode);
+
+        this.size -= 1;
+    }
+
     private boolean validRedParent(Node parent) {
         if(parent == this.nil) {
             return true;
